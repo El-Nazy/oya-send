@@ -12,10 +12,6 @@ const UserSchema = new Schema(
       type: String,
       required: [true, "phone is required"],
     },
-    // email: {
-    //   type: String,
-    //   required: [true, "email is required"],
-    // },
     password: {
       type: String,
       required: [true, "password is required"],
@@ -23,16 +19,6 @@ const UserSchema = new Schema(
     bvn: {
       type: String
     },
-    // imgUrl: {
-    //   type: String,
-    //   default: "/uploads/defaultImg.png",
-    // },
-    // appointments: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Appointment',
-    //   }
-    // ]
   },
   {
     timestamps: true
