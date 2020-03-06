@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const uri = process.env.MONGODB_URI || "mongodb+srv://OyaSendAdmin:databasepassword@oya-send-cluster-4kewb.mongodb.net/test?retryWrites=true&w=majority"
+const uri = "mongodb+srv://OyaSendAdmin:databasepassword@oya-send-cluster-4kewb.mongodb.net/test?retryWrites=true&w=majority"
 
 const options = {
   useNewUrlParser: true,
