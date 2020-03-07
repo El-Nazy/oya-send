@@ -4,12 +4,15 @@ const config = require('./config');
 const http = require('http');
 const app = require('express')();
 const server = http.createServer(app);
+const cors = require('cors');
 
 const middlewares = require('./middlewares');
 const errorHandler = require('./middlewares/errorHandler');
 const routes = require('./routes');
 
 const databaseConfig = require('./config/db');
+
+app.use(cors());
 
 middlewares(app);
 
