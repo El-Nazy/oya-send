@@ -1,5 +1,6 @@
-require('express-async-errors')
-const CustomError = require("./helpers/CustomError");
+require('express-async-errors');
+const CustomError = require('./helpers/CustomError');
+const config = require('./config');
 const http = require('http');
 const app = require('express')();
 const server = http.createServer(app);
@@ -9,22 +10,22 @@ const errorHandler = require('./middlewares/errorHandler');
 const routes = require('./routes');
 
 const databaseConfig = require('./config/db');
-const port = process.env.PORT || 3030;
 
 middlewares(app);
 
-app.use('/api', routes())
+app.use('/api', routes());
 
 app.use((req, res, next) => {
-  throw new CustomError("Invalid request", 400);
+	const error = new CustomError(`${req.method} to ${req.url} not found`, 404);
+
+	next(error);
 });
 
 app.use(errorHandler);
 
-server.listen(port, () => {
-  console.log(`:: server listening on port ${port}`);
-  databaseConfig();
+server.listen(config.port, () => {
+	console.log(`:: server listening on port ${config.port}`);
+	databaseConfig();
 });
 
 // server.on('error', (error) => { console.log(`:: error: ${error}`); });
-
