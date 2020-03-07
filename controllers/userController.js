@@ -12,13 +12,13 @@ const CustomError = require('../helpers/CustomError');
 
 class UserContoller {
 	async signupUser(req, res, next) {
-		const token = await signupUser(req.body);
-		res.status(201).send(response('Account created', token));
+		const data = await signupUser(req.body);
+		res.status(201).send(response('Account created', data));
 	}
 
 	async signinUser(req, res, next) {
-		const token = await signinUser(req.body);
-		res.status(200).send(response('User signed in', token));
+		const data = await signinUser(req.body);
+		res.status(200).send(response('User signed in', data));
 	}
 
 	async getUsers(req, res, next) {

@@ -17,13 +17,13 @@ class UsersService {
 		console.log(response.data);
 		user.personId = response.data.personId;
 		const token = await jwt.sign(
-			{ id: user._id, role: 'user' },
-			config.jwt_key
+			user._id,
+			config.jwt_key, {expiresIn: "24h"} 
 		);
 
 		await user.save();
 
-		return token;
+		return {token, user};
 	}
 
 	async signinUser(data) {
@@ -40,11 +40,11 @@ class UsersService {
 		if (!isCorrect) throw new CustomError('Incorrect email or password');
 
 		const token = await jwt.sign(
-			{ id: user._id, role: 'user' },
-			config.jwt_key
+			user._id,
+			config.jwt_key, {expiresIn: "24h"} 
 		);
 
-		return token;
+		return {token, user};
 	}
 
 	async getUsers() {
